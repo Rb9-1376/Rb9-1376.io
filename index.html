@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rb9-1376</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- 中文字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#93C5FD',
+            docker: '#2496ED', // Docker特色蓝色
+            neutral: '#F9FAFB',
+            dark: '#1F2937',
+          },
+          fontFamily: {
+            sans: ['Noto Sans SC', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+      .hover-scale:hover {
+        transform: scale(1.02);
+      }
+      .text-balance {
+        text-wrap: balance;
+      }
+      .docker-icon-bg {
+        background: linear-gradient(135deg, #2496ED 0%, #3B82F6 100%);
+      }
+    }
+  </style>
+</head>
+
+<body class="font-sans bg-neutral text-dark antialiased">
+  <!-- 导航栏 -->
+  <header class="fixed w-full bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <a href="#home" class="text-lg font-medium text-primary">Rb9-1376</a>
+
+        <!-- 桌面端导航 -->
+        <nav class="hidden md:flex space-x-8">
+          <a href="#home" class="text-gray-600 hover:text-primary transition-colors">首页</a>
+          <a href="#works" class="text-gray-600 hover:text-primary transition-colors">作品</a>
+          <a href="#docker" class="text-gray-600 hover:docker transition-colors">Docker探索心得</a>
+          <a href="#about" class="text-gray-600 hover:text-primary transition-colors">关于</a>
+          <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">联系</a>
+        </nav>
+
+        <!-- 移动端菜单按钮 -->
+        <button id="menu-toggle" class="md:hidden text-gray-600">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- 移动端导航菜单 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+      <div class="container mx-auto px-4 py-3 space-y-2">
+        <a href="#home" class="block py-2 text-gray-600 hover:text-primary">首页</a>
+        <a href="#works" class="block py-2 text-gray-600 hover:text-primary">作品</a>
+        <a href="#docker" class="block py-2 text-gray-600 hover:docker">Docker探索</a>
+        <a href="#about" class="block py-2 text-gray-600 hover:text-primary">关于</a>
+        <a href="#contact" class="block py-2 text-gray-600 hover:text-primary">联系</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 首页 -->
+  <section id="home" class="pt-32 pb-20 px-4">
+    <div class="container mx-auto max-w-3xl text-center">
+      <div class="w-28 h-28 rounded-full overflow-hidden mx-auto mb-8 border-2 border-secondary">
+        <img src="./image/logo.jpg" alt="个人照片" class="w-full h-full object-cover">
+      </div>
+
+      <h1 class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-4">创新，永无止境！</h1>
+      <p class="text-gray-600 mb-8 max-w-xl mx-auto text-balance">
+        探索编程、设计与容器技术的世界
+      </p>
+
+      <div class="flex justify-center space-x-6">
+        <a href="#" class="text-gray-500 hover:text-primary transition-colors" title="GitHub">
+          <i class="fa fa-github text-xl"></i>
+        </a>
+        <a href="https://space.bilibili.com/1095203536" target="_blank" class="text-gray-500 hover:text-primary transition-colors" title="B站">
+          <i class="fa fa-play-circle text-xl"></i>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-primary transition-colors" title="微博">
+          <i class="fa fa-weibo text-xl"></i>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-primary transition-colors" title="邮箱">
+          <i class="fa fa-envelope text-xl"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品展示 -->
+  <section id="works" class="py-20 bg-white px-4">
+    <div class="container mx-auto max-w-5xl">
+      <h2 class="text-2xl font-semibold mb-12 text-center">我的作品</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 作品1 -->
+        <a href="https://space.bilibili.com/1095203536" target="_blank" class="bg-neutral rounded-lg overflow-hidden shadow-sm hover-scale">
+          <img src="https://picsum.photos/id/26/600/400" alt="网页作品" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <h3 class="font-medium mb-2">BILIBILI</h3>
+            <p class="text-gray-600 text-sm mb-3">AT HERE!</p>
+            <div class="flex gap-2">
+              <span class="text-xs bg-blue-50 text-primary px-2 py-1 rounded">HTML</span>
+              <span class="text-xs bg-blue-50 text-primary px-2 py-1 rounded">JS</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- 作品2 -->
+        <div class="bg-neutral rounded-lg overflow-hidden shadow-sm hover-scale">
+          <img src="https://picsum.photos/id/96/600/400" alt="设计作品" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <h3 class="font-medium mb-2">空</h3>
+            <p class="text-gray-600 text-sm mb-3">暂不知道放点什么</p>
+            <div class="flex gap-2">
+              <span class="text-xs bg-blue-50 text-primary px-2 py-1 rounded">设计</span>
+              <span class="text-xs bg-blue-50 text-primary px-2 py-1 rounded">Figma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 作品3 -->
+        <a href="https://www.123865.com/s/iWrQTd-fAbQ3" target="_blank" class="bg-neutral rounded-lg overflow-hidden shadow-sm hover-scale">
+          <img src="https://picsum.photos/id/180/600/400" alt="编程作品" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <h3 class="font-medium mb-2">随机点名</h3>
+            <p class="text-gray-600 text-sm mb-3">Python制作的随机点名工具，教室好帮手</p>
+            <div class="flex gap-2">
+              <span class="text-xs bg-blue-50 text-primary px-2 py-1 rounded">Python</span>
+              <span class="text-xs bg-blue-50 text-primary px-2 py-1 rounded">工具</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Docker探索区域 -->
+  <section id="docker" class="py-20 bg-white/50 px-4">
+    <div class="container mx-auto max-w-5xl">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full docker-icon-bg text-white mb-4">
+          <i class="fa fa-cubes text-2xl"></i>
+        </div>
+        <h2 class="text-2xl font-semibold mb-3">Docker探索</h2>
+        <div class="w-16 h-0.5 bg-docker mx-auto mb-4"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto text-sm">
+          学习容器技术的小尝试，用Docker简化开发环境配置
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Docker项目1 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm hover-scale border-l-4 border-docker">
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full docker-icon-bg flex items-center justify-center mr-3">
+                <i class="fa fa-globe text-white"></i>
+              </div>
+              <h3 class="font-medium text-lg">博客容器化</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              将个人博客打包成Docker镜像，实现一键部署和环境一致性，学习了Dockerfile编写基础。
+            </p>
+            <div class="flex gap-2">
+              <span class="text-xs bg-blue-50 text-docker px-2 py-1 rounded">Docker</span>
+              <span class="text-xs bg-blue-50 text-docker px-2 py-1 rounded">Nginx</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Docker项目2 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm hover-scale border-l-4 border-docker">
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full docker-icon-bg flex items-center justify-center mr-3">
+                <i class="fa fa-code-fork text-white"></i>
+              </div>
+              <h3 class="font-medium text-lg">多容器应用</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              使用Docker Compose管理前端和后端容器，模拟完整Web应用架构，理解服务间通信原理。
+            </p>
+            <div class="flex gap-2">
+              <span class="text-xs bg-blue-50 text-docker px-2 py-1 rounded">Docker Compose</span>
+              <span class="text-xs bg-blue-50 text-docker px-2 py-1 rounded">多容器</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Docker学习笔记 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm hover-scale border-l-4 border-docker md:col-span-2">
+          <div class="p-6">
+            <div class="flex items-center mb-4">
+              <div class="w-10 h-10 rounded-full docker-icon-bg flex items-center justify-center mr-3">
+                <i class="fa fa-book text-white"></i>
+              </div>
+              <h3 class="font-medium text-lg">心得</h3>
+            </div>
+            <p class="text-gray-600 text-sm mb-4">
+              Docker让环境配置变得简单，解决了"在我电脑上能运行"的问题。目前正在学习Kubernetes基础，
+              希望未来能理解容器编排的原理。推荐初学者从简单应用容器化开始实践，逐步理解镜像、容器、网络等概念。
+            </p>
+            <a href="#" class="text-docker hover:text-docker/80 text-sm inline-flex items-center transition-colors">
+              查看完整笔记（暂时不考虑开放） <i class="fa fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于我 -->
+  <section id="about" class="py-20 bg-neutral px-4">
+    <div class="container mx-auto max-w-3xl">
+      <h2 class="text-2xl font-semibold mb-12 text-center">关于我</h2>
+
+      <div class="bg-white p-8 rounded-lg shadow-sm">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="md:col-span-1">
+            <img src="https://picsum.photos/id/20/300/400" alt="我的照片" class="w-full h-auto rounded">
+          </div>
+
+          <div class="md:col-span-2">
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <i class="fa fa-graduation-cap text-primary mt-1 mr-3"></i>
+                <div>
+                  <h3 class="font-medium">高中生</h3>
+                  <p class="text-gray-600 text-sm">我的中学纯反动，知道的就别来</p>
+                </div>
+              </li>
+
+              <li class="flex items-start">
+                <i class="fa fa-code text-primary mt-1 mr-3"></i>
+                <div>
+                  <h3 class="font-medium">技能爱好</h3>
+                  <p class="text-gray-600 text-sm">巡飞弹 | 吃、喝、拉、撒 </p>
+                </div>
+              </li>
+
+              <li class="flex items-start">
+                <i class="fa fa-lightbulb-o text-primary mt-1 mr-3"></i>
+                <div>
+                  <h3 class="font-medium">学习目标</h3>
+                  <p class="text-gray-600 text-sm">深入学习马克思主义和电子技术，完成一个伟大的事业</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section id="contact" class="py-20 bg-white px-4">
+    <div class="container mx-auto max-w-xl">
+      <h2 class="text-2xl font-semibold mb-12 text-center">有疑问和bug之类的问题，联系我</h2>
+
+      <form id="contact-form" class="space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div>
+            <label for="name" class="block text-gray-600 text-sm mb-2">你的名字</label>
+            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="请输入名字" required>
+          </div>
+
+          <div>
+            <label for="email" class="block text-gray-600 text-sm mb-2">邮箱</label>
+            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="方便回复你" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="message" class="block text-gray-600 text-sm mb-2">留言与建议（或者bug反馈信息）</label>
+          <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all resize-none" placeholder="想对我说什么？" required></textarea>
+        </div>
+
+        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white py-2 rounded-lg transition-colors">
+          发送消息
+        </button>
+
+        <div id="status-message" class="hidden px-4 py-3 rounded-lg text-sm"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="py-8 bg-neutral border-t border-gray-100">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-500 text-sm">© 2025 Rb9-1376</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 初始化EmailJS (请替换为你的User ID)
+    emailjs.init("EO-1bQ8hxeO3VhOsi");  // 注意：这里需要你补充自己的User ID
+
+    // 移动端菜单切换
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      if (mobileMenu.classList.contains('hidden')) {
+        menuToggle.innerHTML = '<i class="fa fa-bars"></i>';
+      } else {
+        menuToggle.innerHTML = '<i class="fa fa-times"></i>';
+      }
+    });
+
+    // 平滑滚动
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // 关闭移动菜单
+        if (!mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          menuToggle.innerHTML = '<i class="fa fa-bars"></i>';
+        }
+
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // 联系表单提交处理
+    const contactForm = document.getElementById('contact-form');
+    const statusMessage = document.getElementById('status-message');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // 获取表单数据
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+      };
+
+      // 发送邮件
+      emailjs.send(
+        'service_5c5tyqi',  // 你的Service ID
+        'template_fevizyg', // 你的Template ID
+        formData
+      )
+      .then(function(response) {
+        // 发送成功
+        statusMessage.textContent = '同志，感谢你为我们伟大的事业献出了一份力量，我会尽快回复你，请留意你的邮箱。';
+        statusMessage.className = 'px-4 py-3 rounded-lg text-sm bg-green-50 text-green-700 border border-green-100';
+        statusMessage.classList.remove('hidden');
+        contactForm.reset(); // 重置表单
+
+        // 3秒后隐藏成功消息
+        setTimeout(() => {
+          statusMessage.classList.add('hidden');
+        }, 3000);
+      }, function(error) {
+        // 发送失败
+        statusMessage.textContent = '同志，我们这边似乎出错了，实在抱歉。错误信息：' + error.text;
+        statusMessage.className = 'px-4 py-3 rounded-lg text-sm bg-red-50 text-red-700 border border-red-100';
+        statusMessage.classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
